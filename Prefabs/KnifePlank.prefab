@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5750938108120655112}
   - component: {fileID: 420661500963722111}
   - component: {fileID: 3685675887503303800}
+  - component: {fileID: 3633281935553027108}
   m_Layer: 0
   m_Name: KnifePlank
   m_TagString: Untagged
@@ -173,3 +174,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3633281935553027108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500687738751001271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c75b0883663a346a301f203b2a8cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLaunchNext: 1.2
+  knife: {fileID: 1673903273299791077, guid: 3154f175a2ecc654c8d9636f6721f5ef, type: 3}

@@ -14,7 +14,9 @@ public class Flamer : EnemyData
     private void Update()
     {
         _timer -= Time.deltaTime;
-        if(_timer < 0)
+        if (isActive) light.intensity = Mathf.Lerp(light.intensity, 14, Time.deltaTime);
+        else light.intensity = Mathf.Lerp(light.intensity, 0, Time.deltaTime*3);
+        if (_timer < 0)
         {
             if (isActive)
             {
@@ -31,13 +33,11 @@ public class Flamer : EnemyData
     private void Disable()
     {
         particleSystem.emissionRate = 0;
-        light.enabled = false;
         isActive = false;
     }
     private void Enable()
     {
         particleSystem.emissionRate = 23;
-        light.enabled = true;
         isActive = true;
 
     }

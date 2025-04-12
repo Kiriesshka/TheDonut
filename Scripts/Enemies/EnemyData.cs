@@ -4,9 +4,11 @@ public class EnemyData : MonoBehaviour
 {
     public enum EnemyType
     {
-        enemy,
-        knife,
-        Flamer
+        Enemy,
+        Cake,
+        Knife,
+        Flamer,
+        Hammer
     }
     public EnemyType enemyType;
     public int damage = 1;
