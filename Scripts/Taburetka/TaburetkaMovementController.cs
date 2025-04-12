@@ -9,6 +9,12 @@ public class TaburetkaMovementController : MonoBehaviour
     [SerializeField] private LayerMask wall;
     [SerializeField] private Rigidbody rb;
 
+    [SerializeField] private KT_HoldableButton w;
+    [SerializeField] private KT_HoldableButton a;
+    [SerializeField] private KT_HoldableButton s;
+    [SerializeField] private KT_HoldableButton d;
+
+
     private bool isRolling = false;
     private void Start()
     {
@@ -18,19 +24,19 @@ public class TaburetkaMovementController : MonoBehaviour
     private void Update()
     {
         if (isRolling) return;
-        if (Input.GetKey(KeyCode.S) && CanRollInDirection(Vector3.back))
+        if ((Input.GetKey(KeyCode.S) || s.isOn) && CanRollInDirection(Vector3.back))
         {
             StartCoroutine(Roll(Vector3.back));
         }
-        else if (Input.GetKey(KeyCode.W) && CanRollInDirection(Vector3.forward))
+        else if ((Input.GetKey(KeyCode.W) || w.isOn) && CanRollInDirection(Vector3.forward))
         {
             StartCoroutine(Roll(Vector3.forward));
         }
-        else if (Input.GetKey(KeyCode.A) && CanRollInDirection(Vector3.left))
+        else if ((Input.GetKey(KeyCode.A) || a.isOn) && CanRollInDirection(Vector3.left))
         {
             StartCoroutine(Roll(Vector3.left));
         }
-        else if (Input.GetKey(KeyCode.D) && CanRollInDirection(Vector3.right))
+        else if ((Input.GetKey(KeyCode.D) || d.isOn) && CanRollInDirection(Vector3.right))
         {
             StartCoroutine(Roll(Vector3.right));
         }

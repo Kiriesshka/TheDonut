@@ -124,6 +124,7 @@ MonoBehaviour:
   enemyType: 4
   damage: 1
   destroyAfterCollision: 0
+  nameInDieReason: 
 --- !u!1 &2005338983292625265
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 2005338983292625265}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.216, z: 5.72}
+  m_LocalPosition: {x: 0, y: 0, z: 5.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -185,7 +186,7 @@ Transform:
   m_GameObject: {fileID: 3966029227455012972}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.216, z: 2.864}
+  m_LocalPosition: {x: 0, y: 0, z: 2.864}
   m_LocalScale: {x: 0.76, y: 0.32832, z: 6.1512065}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -280,6 +281,7 @@ MonoBehaviour:
   enemyType: 4
   damage: 1
   destroyAfterCollision: 0
+  nameInDieReason: 
 --- !u!1 &5382249363794916283
 GameObject:
   m_ObjectHideFlags: 0

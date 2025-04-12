@@ -31,10 +31,11 @@ public class TaburetkaCollisions : MonoBehaviour
     {
         if (_resistanceLeft >= 0) _resistanceLeft -= Time.deltaTime;
         //POSSIBLE BUG!!!
-        if (transform.position.y <= -10)
+        if (transform.position.y <= -5)
         {
             dieReason = "Вы выпали из уровня!";
             died.Invoke();
+            Die();
         }
     }
     private void OnTriggerStay(Collider other)
@@ -80,7 +81,7 @@ public class TaburetkaCollisions : MonoBehaviour
         if (hp <= 0)
         {
             died.Invoke();
-            dieReason = $"Вы погибли от {enemyData.nameInDieReason}";
+            dieReason = $"Вы погибли от [{enemyData.nameInDieReason}]";
             Die();
         }
         if(enemyData.destroyAfterCollision)
@@ -99,7 +100,8 @@ public class TaburetkaCollisions : MonoBehaviour
         died.Invoke();
         _rb.constraints = RigidbodyConstraints.None;
         _rb.useGravity = true;
-        _rb.AddForceAtPosition(new Vector3(Random.Range(-1, 1f), 10, Random.Range(-1, 1)).normalized * 40, transform.position + new Vector3(Random.Range(-1, 1f), Random.Range(-1, 1f), Random.Range(-1, 1)));
+        _rb.AddForceAtPosition(new Vector3(Random.Range(-1, 1f), 10, Random.Range(-1, 1)).normalized * 100, transform.position + new Vector3(Random.Range(-1, 1f), Random.Range(-1, 1f), Random.Range(-1, 1)));
+        enabled = false;
     }
 }
 public class MoveUpAndRotate : MonoBehaviour
