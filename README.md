@@ -1,2 +1,2 @@
-# TheDonut
-A game about donut
+# Taburetka
+A game about taburetka
