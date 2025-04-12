@@ -13,4 +13,5 @@ public class EnemyData : MonoBehaviour
     public EnemyType enemyType;
     public int damage = 1;
     public bool destroyAfterCollision;
+    public string nameInDieReason;
 }

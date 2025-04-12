@@ -38,7 +38,12 @@ public class TaburetkaMovementController : MonoBehaviour
     }
     private bool CanRollInDirection(Vector3 direction)
     {
-        return !Physics.Raycast(transform.position + direction / 2f, direction, 0.55f, wall);
+        return !(Physics.Raycast(transform.position + direction / 2f, direction, 0.55f, wall))&&IsGrounded();
+    }
+    private bool IsGrounded()
+    {
+        bool isGr = Physics.Raycast(transform.position, Vector3.down, 0.55f, wall);
+        return isGr;
     }
     IEnumerator Roll(Vector3 direction)
     {

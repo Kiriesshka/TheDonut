@@ -8,6 +8,7 @@ public class TaburetkaCollisions : MonoBehaviour
 
     private Rigidbody _rb;
     private bool _alreadyDied;
+    public string dieReason;
     public UnityEvent died;
     public UnityEvent hpChanged;
     public UnityEvent cakesChanged;
@@ -29,6 +30,12 @@ public class TaburetkaCollisions : MonoBehaviour
     private void Update()
     {
         if (_resistanceLeft >= 0) _resistanceLeft -= Time.deltaTime;
+        //POSSIBLE BUG!!!
+        if (transform.position.y <= -10)
+        {
+            dieReason = "Вы выпали из уровня!";
+            died.Invoke();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -73,6 +80,7 @@ public class TaburetkaCollisions : MonoBehaviour
         if (hp <= 0)
         {
             died.Invoke();
+            dieReason = $"Вы погибли от {enemyData.nameInDieReason}";
             Die();
         }
         if(enemyData.destroyAfterCollision)

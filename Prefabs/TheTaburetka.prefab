@@ -393,15 +393,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178859bca6101e546826d718439a8d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes: 0100000002000000
+  enemyTypes: 01000000020000000300000004000000
   died:
     m_PersistentCalls:
       m_Calls: []
   hpChanged:
     m_PersistentCalls:
       m_Calls: []
+  cakesChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  cakesBecomeMax:
+    m_PersistentCalls:
+      m_Calls: []
   hpMax: 3
   hp: 3
+  cakesMax: 3
+  cakes: 0
   timerResistance: 1
 --- !u!54 &1791510160208564146
 Rigidbody:
