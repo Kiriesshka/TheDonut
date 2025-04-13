@@ -8,7 +8,8 @@ public class EnemyData : MonoBehaviour
         Cake,
         Knife,
         Flamer,
-        Hammer
+        Hammer,
+        Button
     }
     public EnemyType enemyType;
     public int damage = 1;

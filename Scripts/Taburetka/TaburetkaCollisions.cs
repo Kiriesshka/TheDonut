@@ -11,18 +11,19 @@ public class TaburetkaCollisions : MonoBehaviour
     public string dieReason;
     public UnityEvent died;
     public UnityEvent hpChanged;
-    public UnityEvent cakesChanged;
-    public UnityEvent cakesBecomeMax;
+    public UnityEvent screwsChanged;
+    public UnityEvent screwsBecomeMax;
 
 
     [SerializeField] private int hpMax;
     public int hp;
-    [SerializeField] private int cakesMax;
-    public int cakes;
+    [SerializeField] private int screwsMax;
+    public int screws;
 
     [SerializeField] private float timerResistance;
     private float _resistanceLeft;
 
+    [SerializeField] private float levelMinHeight = -5;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -31,7 +32,7 @@ public class TaburetkaCollisions : MonoBehaviour
     {
         if (_resistanceLeft >= 0) _resistanceLeft -= Time.deltaTime;
         //POSSIBLE BUG!!!
-        if (transform.position.y <= -5)
+        if (transform.position.y <= levelMinHeight)
         {
             dieReason = "Вы выпали из уровня!";
             died.Invoke();
@@ -51,14 +52,14 @@ public class TaburetkaCollisions : MonoBehaviour
                 }
                 else if(enemyData.enemyType == EnemyData.EnemyType.Cake && !other.GetComponent<MoveUpAndRotate>())
                 {
-                    if (cakes < cakesMax)
+                    if (screws < screwsMax)
                     {
                         Destroy(other.gameObject.GetComponent<Collider>());
-                        cakes++;
-                        cakesChanged.Invoke();
-                        if (cakes == cakesMax)
+                        screws++;
+                        screwsChanged.Invoke();
+                        if (screws == screwsMax)
                         {
-                            cakesBecomeMax.Invoke();
+                            screwsBecomeMax.Invoke();
                         }
                         other.gameObject.AddComponent<MoveUpAndRotate>();
                     }

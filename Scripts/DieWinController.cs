@@ -8,7 +8,7 @@ public class DieWinController : MonoBehaviour
     private void Start()
     {
         taburetkaCollisions.died.AddListener(Loose);
-        taburetkaCollisions.cakesBecomeMax.AddListener(Win);
+        taburetkaCollisions.screwsBecomeMax.AddListener(Win);
     }
     private void Loose()
     {
