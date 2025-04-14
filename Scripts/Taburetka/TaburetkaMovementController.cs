@@ -74,5 +74,15 @@ public class TaburetkaMovementController : MonoBehaviour
         globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
         isRolling = false;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 10);
+
+        foreach(var c in colliders)
+        {
+            if(c.TryGetComponent(out TaburetkaMovedHandler tmh))
+            {
+                tmh.HandleTaburetkaMovement();
+            }
+        }
     }
 }

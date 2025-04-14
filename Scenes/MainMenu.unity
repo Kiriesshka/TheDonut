@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16462561f856e1c7d838738568919722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 4
+  color: 5
   index: -1
   workMode: 1
   audioOnMouseDown: 
@@ -1424,6 +1424,58 @@ PrefabInstance:
       propertyPath: pushAgainWindow
       value: 
       objectReference: {fileID: 370383898}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: isDarkTheme
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeLow.b
+      value: 0.19496846
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeLow.g
+      value: 0.19496846
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeLow.r
+      value: 0.19496846
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeHigh.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeHigh.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeHigh.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeText.b
+      value: 0.14465404
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeText.g
+      value: 0.14465404
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeText.r
+      value: 0.14465404
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeTextOther.b
+      value: 0.52201253
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeTextOther.g
+      value: 0.52201253
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443152346338684481, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
+      propertyPath: darkThemeTextOther.r
+      value: 0.52201253
+      objectReference: {fileID: 0}
     - target: {fileID: 4552189361629636227, guid: cb3c4163144d93e4488d876e78f813cc, type: 3}
       propertyPath: m_Name
       value: KT_GlobalSettings
