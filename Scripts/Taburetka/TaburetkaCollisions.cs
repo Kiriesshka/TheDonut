@@ -60,6 +60,7 @@ public class TaburetkaCollisions : MonoBehaviour
                         if (screws == screwsMax)
                         {
                             screwsBecomeMax.Invoke();
+                            Win();
                         }
                         other.gameObject.AddComponent<MoveUpAndRotate>();
                     }

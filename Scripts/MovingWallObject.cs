@@ -25,6 +25,25 @@ public class MovingWallObject : MonoBehaviour
             stop = true;
         }
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.transform.name == "TheTaburetka")
+        {
+            collision.transform.SetParent(transform);
+            if(stop)
+                collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = false;
+            else
+                collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.IsChildOf(transform))
+        {
+            collision.transform.SetParent(null);
+            collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = false;
+        }
+    }
     private void MoveToNext()
     {
         currentBeacon += 1;

@@ -12,8 +12,12 @@ public class WorldButton : MonoBehaviour
     public UnityEvent onActivate;
     public UnityEvent onDeactivate;
 
+    private KT_GlobalSettings globalSettings;
+
     private void Start()
     {
+        globalSettings = GameObject.Find("KT_GlobalSettings").GetComponent<KT_GlobalSettings>();
+
         defaultLocalPosition = transform.localPosition;
     }
     private void Update()
@@ -24,6 +28,7 @@ public class WorldButton : MonoBehaviour
             {
                 isOn = false;
                 onDeactivate.Invoke();
+                globalSettings.GetGameSound().MakeSound("Button", "World");
             }
             transform.localPosition = Vector3.Lerp(transform.localPosition, defaultLocalPosition + new Vector3(0, -0.13f, 0), Time.deltaTime * 4);
         }
@@ -36,6 +41,7 @@ public class WorldButton : MonoBehaviour
     {
         if (isOn) return;
         onActivate.Invoke();
+        globalSettings.GetGameSound().MakeSound("Button", "World");
         isOn = true;
     }
 }

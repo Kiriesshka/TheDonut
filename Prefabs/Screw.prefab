@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7af05d062644114aa9d4fcf21e3214a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: -10, y: 1, z: -12}
+  direction: {x: -0.1, y: 1, z: -0.1}
   angle: 180
 --- !u!1 &2732183959307933993
 GameObject:

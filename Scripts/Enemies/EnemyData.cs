@@ -15,4 +15,11 @@ public class EnemyData : MonoBehaviour
     public int damage = 1;
     public bool destroyAfterCollision;
     public string nameInDieReason;
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.name == "Wall")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

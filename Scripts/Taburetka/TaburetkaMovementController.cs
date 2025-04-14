@@ -14,16 +14,20 @@ public class TaburetkaMovementController : MonoBehaviour
     [SerializeField] private KT_HoldableButton s;
     [SerializeField] private KT_HoldableButton d;
 
+    private KT_GlobalSettings globalSettings;
+
+    public bool unableToGo = false;
 
     private bool isRolling = false;
     private void Start()
     {
+        globalSettings = GameObject.Find("KT_GlobalSettings").GetComponent<KT_GlobalSettings>();
         isRolling = false;
         rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {
-        if (isRolling) return;
+        if (isRolling || unableToGo) return;
         if ((Input.GetKey(KeyCode.S) || s.isOn) && CanRollInDirection(Vector3.back))
         {
             StartCoroutine(Roll(Vector3.back));
@@ -66,6 +70,8 @@ public class TaburetkaMovementController : MonoBehaviour
             remainingAngle -= rotationAngle;
             yield return null;
         }
+        string[] sounds = { "Wood0", };
+        globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
         isRolling = false;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
