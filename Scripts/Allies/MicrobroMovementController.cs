@@ -11,6 +11,7 @@ public class MicrobroMovementController : MovementController
     [SerializeField] private float speed;
     [SerializeField] private LayerMask wall;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private string[] sounds;
 
     private KT_GlobalSettings globalSettings;
 
@@ -70,7 +71,7 @@ public class MicrobroMovementController : MovementController
     }
     private bool CanRollInDirection(Vector3 direction)
     {
-        return !(Physics.Raycast(transform.position-new Vector3(0,0.15f), direction, 0.28f, wall)) && IsGrounded();
+        return !(Physics.Raycast(transform.position-new Vector3(0,0.21f), direction, 0.45f, wall)) && IsGrounded();
     }
     private bool IsGrounded()
     {
@@ -92,8 +93,8 @@ public class MicrobroMovementController : MovementController
             remainingAngle -= rotationAngle;
             yield return null;
         }
-        string[] sounds = { "Wood0", };
-        globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
+        if(sounds!=null && sounds.Length>0)
+            globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
 
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 
@@ -103,7 +104,7 @@ public class MicrobroMovementController : MovementController
         {
             if (c.TryGetComponent(out TaburetkaMovedHandler tmh))
             {
-                tmh.HandleTaburetkaMovement();
+                tmh.HandleTaburetkaMovement(transform);
             }
         }
 

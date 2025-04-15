@@ -13,8 +13,9 @@ public class Hint : MonoBehaviour, TaburetkaMovedHandler
         text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
 
     }
-    public void HandleTaburetkaMovement()
+    public void HandleTaburetkaMovement(Transform t)
     {
+        player = t;
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceToPlayer < distanceToShow)
         {

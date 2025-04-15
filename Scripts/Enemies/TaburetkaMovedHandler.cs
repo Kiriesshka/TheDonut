@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface TaburetkaMovedHandler
 {
-    public abstract void HandleTaburetkaMovement();
+    public abstract void HandleTaburetkaMovement(Transform taburetka);
 }

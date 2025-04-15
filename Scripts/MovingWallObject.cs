@@ -7,6 +7,8 @@ public class MovingWallObject : MonoBehaviour
     private int currentBeacon;
 
     private bool stop = true;
+
+    private TaburetkaMovementController _taburetka;
     private void OnValidate()
     {
         for(int i = 0; i < beacons.Length-1; i++)
@@ -23,25 +25,29 @@ public class MovingWallObject : MonoBehaviour
         {
             transform.position = beacons[currentBeacon];
             stop = true;
+            if(_taburetka)
+                _taburetka.UnFreeze();
         }
     }
     private void OnCollisionStay(Collision collision)
     {
         if(collision.transform.name == "TheTaburetka")
         {
+            _taburetka = collision.gameObject.GetComponent<TaburetkaMovementController>();
             collision.transform.SetParent(transform);
             if(stop)
-                collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = false;
+                _taburetka.UnFreeze();
             else
-                collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = true;
+                _taburetka.Freeze();
         }
     }
     private void OnCollisionExit(Collision collision)
     {
+        if (!stop) return; 
         if (collision.transform.IsChildOf(transform))
         {
             collision.transform.SetParent(null);
-            collision.gameObject.GetComponent<TaburetkaMovementController>().unableToGo = false;
+            collision.gameObject.GetComponent<TaburetkaMovementController>().UnFreeze();
         }
     }
     private void MoveToNext()

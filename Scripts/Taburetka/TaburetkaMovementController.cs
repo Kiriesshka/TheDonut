@@ -8,6 +8,7 @@ public class TaburetkaMovementController : MovementController
     [SerializeField] private Transform donut;
     [SerializeField] private LayerMask wall;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private string[] sounds;
 
     [SerializeField] private KT_HoldableButton w;
     [SerializeField] private KT_HoldableButton a;
@@ -16,9 +17,10 @@ public class TaburetkaMovementController : MovementController
 
     private KT_GlobalSettings globalSettings;
 
-    public bool unableToGo = false;
+    private bool _isFreezed = false;
 
     private bool isRolling = false;
+
     private void Start()
     {
         globalSettings = GameObject.Find("KT_GlobalSettings").GetComponent<KT_GlobalSettings>();
@@ -27,7 +29,7 @@ public class TaburetkaMovementController : MovementController
     }
     private void Update()
     {
-        if (isRolling || unableToGo) return;
+        if (isRolling || _isFreezed) return;
         if ((Input.GetKey(KeyCode.S) || s.isOn) && CanRollInDirection(Vector3.back))
         {
             StartCoroutine(Roll(Vector3.back));
@@ -70,8 +72,8 @@ public class TaburetkaMovementController : MovementController
             remainingAngle -= rotationAngle;
             yield return null;
         }
-        string[] sounds = { "Wood0", };
-        globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
+        if (sounds != null && sounds.Length > 0)
+            globalSettings.GetGameSound().MakeSound(sounds[Random.Range(0, sounds.Length)], "World");
         isRolling = false;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 
@@ -81,8 +83,27 @@ public class TaburetkaMovementController : MovementController
         {
             if(c.TryGetComponent(out TaburetkaMovedHandler tmh))
             {
-                tmh.HandleTaburetkaMovement();
+                tmh.HandleTaburetkaMovement(transform);
             }
         }
+        transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+    }
+    public void Freeze()
+    {
+        if (_isFreezed) return;
+        _isFreezed = true;
+        transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+        isRolling = false;
+        transform.eulerAngles = new Vector3(Mathf.RoundToInt(transform.eulerAngles.x), Mathf.RoundToInt(transform.eulerAngles.y), Mathf.RoundToInt(transform.eulerAngles.z));
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+
+    }
+    public void UnFreeze()
+    {
+        if (!_isFreezed) return;
+        _isFreezed = false;
+        transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+        transform.eulerAngles = new Vector3(Mathf.RoundToInt(transform.eulerAngles.x), Mathf.RoundToInt(transform.eulerAngles.y), Mathf.RoundToInt(transform.eulerAngles.z));
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 }

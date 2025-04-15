@@ -670,11 +670,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6640777089480986107, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_Size.x
-      value: 2.98
+      value: 2.94
       objectReference: {fileID: 0}
     - target: {fileID: 6640777089480986107, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_Size.z
-      value: 1.98
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 7025286678397527621, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_LocalScale.x
@@ -2990,7 +2990,7 @@ GameObject:
   - component: {fileID: 1121418321}
   - component: {fileID: 1121418320}
   m_Layer: 6
-  m_Name: Wall (3)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4688,6 +4688,10 @@ PrefabInstance:
       propertyPath: taburetka
       value: 
       objectReference: {fileID: 438689101}
+    - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
+      propertyPath: distanceToDeactivate
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
       propertyPath: onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3

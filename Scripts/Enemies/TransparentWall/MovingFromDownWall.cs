@@ -51,8 +51,13 @@ public class MovingFromDownWall : MonoBehaviour, TaburetkaMovedHandler
     {
         isUp = false;
     }
-    public void HandleTaburetkaMovement()
+    public void HandleTaburetkaMovement(Transform t)
     {
+        if (taburetka && t != taburetka)
+        {
+            if (Vector3.Distance(t.position, transform.position) > Vector3.Distance(taburetka.position, transform.position)) return;
+        }
+        taburetka = t;
         ReCalculate();
     }
 }

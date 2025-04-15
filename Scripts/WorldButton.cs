@@ -39,8 +39,13 @@ public class WorldButton : MonoBehaviour, TaburetkaMovedHandler
         globalSettings.GetGameSound().MakeSound("Button", "World");
         isOn = true;
     }
-    public void HandleTaburetkaMovement()
+    public void HandleTaburetkaMovement(Transform t)
     {
+        if (taburetka && t != taburetka)
+        {
+            if (Vector3.Distance(t.position, transform.position) > Vector3.Distance(taburetka.position, transform.position)) return;
+        }
+        taburetka = t;
         if (noDeactivate) return;
         if (!isOn) return;
         if (Vector3.Distance(transform.position, taburetka.position) >= distanceToDeactivate)

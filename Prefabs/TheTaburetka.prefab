@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044d252f8341e444b8383c8784c02749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementHandleRadius: 10
   speed: 500
   donut: {fileID: 0}
   wall:
