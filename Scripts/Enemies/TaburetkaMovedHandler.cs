@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class TaburetkaMovedHandler : MonoBehaviour
+public interface TaburetkaMovedHandler
 {
     public abstract void HandleTaburetkaMovement();
 }

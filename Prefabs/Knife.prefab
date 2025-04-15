@@ -79,6 +79,7 @@ MonoBehaviour:
   enemyType: 2
   damage: 1
   destroyAfterCollision: 1
+  nameInDieReason: "\u041D\u043E\u0436"
 --- !u!65 &2605112776265781910
 BoxCollider:
   m_ObjectHideFlags: 0

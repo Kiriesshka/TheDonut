@@ -92,12 +92,17 @@ public class TaburetkaCollisions : MonoBehaviour
     }
     private void Win()
     {
-        GetComponent<TaburetkaMovementController>().enabled = false;
+        GetComponent<MovementController>().enabled = false;
         enabled = false;
     }
     private void Die()
     {
-        GetComponent<TaburetkaMovementController>().enabled = false;
+        GetComponent<MovementController>().enabled = false;
+        if(TryGetComponent(out MicrobroMovementController mmc))
+        {
+            Destroy(gameObject);
+            return;
+        }
         _alreadyDied = true;
         died.Invoke();
         _rb.constraints = RigidbodyConstraints.None;

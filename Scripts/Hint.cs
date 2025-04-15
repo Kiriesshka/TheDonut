@@ -1,17 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class Hint : MonoBehaviour
+public class Hint : MonoBehaviour, TaburetkaMovedHandler
 {
     [SerializeField] private float distanceToShow = 2;
     [SerializeField] private Transform player;
     [SerializeField] private Image tintImage;
     [SerializeField] private TMP_Text text;
+    private void Start()
+    {
+        tintImage.color = new Color(tintImage.color.r, tintImage.color.g, tintImage.color.b, 0);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
 
-    private void Update()
+    }
+    public void HandleTaburetkaMovement()
     {
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-        if(distanceToPlayer < distanceToShow)
+        if (distanceToPlayer < distanceToShow)
         {
             float colorAlpha = Mathf.Lerp(0, 0.8f, (distanceToShow - distanceToPlayer));
             tintImage.color = new Color(tintImage.color.r, tintImage.color.g, tintImage.color.b, colorAlpha);
@@ -22,6 +27,5 @@ public class Hint : MonoBehaviour
             tintImage.color = new Color(tintImage.color.r, tintImage.color.g, tintImage.color.b, 0);
             text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
         }
-        
     }
 }

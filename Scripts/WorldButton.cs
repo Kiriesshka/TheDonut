@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WorldButton : TaburetkaMovedHandler
+public class WorldButton : MonoBehaviour, TaburetkaMovedHandler
 {
     [SerializeField] float distanceToDeactivate = 1;
     [SerializeField] private Transform taburetka;
+    [SerializeField] private bool noDeactivate;
 
     private Vector3 defaultLocalPosition;
     private bool isOn;
@@ -38,8 +39,9 @@ public class WorldButton : TaburetkaMovedHandler
         globalSettings.GetGameSound().MakeSound("Button", "World");
         isOn = true;
     }
-    public override void HandleTaburetkaMovement()
+    public void HandleTaburetkaMovement()
     {
+        if (noDeactivate) return;
         if (!isOn) return;
         if (Vector3.Distance(transform.position, taburetka.position) >= distanceToDeactivate)
         {

@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 1291646952764579487}
   - component: {fileID: 6807862636465255769}
   - component: {fileID: 8782575840588519668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 8208891565848595132}
   - component: {fileID: 4447565861454293438}
   - component: {fileID: 1791510160208564146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TheTaburetka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,12 +379,13 @@ MonoBehaviour:
   donut: {fileID: 0}
   wall:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   rb: {fileID: 0}
   w: {fileID: 0}
   a: {fileID: 0}
   s: {fileID: 0}
   d: {fileID: 0}
+  unableToGo: 0
 --- !u!114 &4447565861454293438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +426,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7405207800345890007}
   serializedVersion: 4
-  m_Mass: 0.1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

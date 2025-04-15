@@ -117,6 +117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3292554873675110883}
   - {fileID: 3230670892020303448}
   - {fileID: 1661005493901709951}
   - {fileID: 276572890376552014}
@@ -125,7 +126,6 @@ Transform:
   - {fileID: 7672259684004047664}
   - {fileID: 6941663737963984467}
   - {fileID: 4718461733400120470}
-  - {fileID: 3292554873675110883}
   - {fileID: 6655310495292326337}
   - {fileID: 280880581871881301}
   - {fileID: 5344164827805713826}
@@ -169,7 +169,7 @@ MonoBehaviour:
   enemyType: 3
   damage: 1
   destroyAfterCollision: 0
-  nameInDieReason: 
+  nameInDieReason: "\u041F\u043B\u0438\u0442\u0430"
   sparkPrefab: {fileID: 0}
   timerActive: 3
   timerSleep: 3
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 3292554873675110883}
   - component: {fileID: 7473877018943697226}
   m_Layer: 6
-  m_Name: Cube (5)
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

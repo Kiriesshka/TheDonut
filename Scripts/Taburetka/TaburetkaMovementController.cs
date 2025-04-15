@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
-public class TaburetkaMovementController : MonoBehaviour
+public class TaburetkaMovementController : MovementController
 {
     [SerializeField] private float speed;
     [SerializeField] private Transform donut;
@@ -75,7 +75,7 @@ public class TaburetkaMovementController : MonoBehaviour
         isRolling = false;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 10);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, movementHandleRadius);
 
         foreach(var c in colliders)
         {
