@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class WorldButton : MonoBehaviour, TaburetkaMovedHandler
 {
     [SerializeField] float distanceToDeactivate = 1;
     [SerializeField] private Transform taburetka;
     [SerializeField] private bool noDeactivate;
+    [SerializeField] private float timerBeforeAction;
 
     private Vector3 defaultLocalPosition;
     private bool isOn;
@@ -32,11 +34,10 @@ public class WorldButton : MonoBehaviour, TaburetkaMovedHandler
             transform.localPosition = Vector3.Lerp(transform.localPosition, defaultLocalPosition, Time.deltaTime * 4);
         }
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isOn) return;
-        onActivate.Invoke();
-        globalSettings.GetGameSound().MakeSound("Button", "World");
+        StartCoroutine(ActivationTimer());
         isOn = true;
     }
     public void HandleTaburetkaMovement(Transform t)
@@ -54,5 +55,11 @@ public class WorldButton : MonoBehaviour, TaburetkaMovedHandler
             onDeactivate.Invoke();
             globalSettings.GetGameSound().MakeSound("Button", "World");
         }
+    }
+    private IEnumerator ActivationTimer()
+    {
+        yield return new WaitForSeconds(timerBeforeAction);
+        onActivate.Invoke();
+        globalSettings.GetGameSound().MakeSound("Button", "World");
     }
 }

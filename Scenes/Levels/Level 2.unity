@@ -5087,12 +5087,16 @@ PrefabInstance:
       value: MovingWall
       objectReference: {fileID: 0}
     - target: {fileID: 6640777089480986107, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: m_Size.x
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640777089480986107, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_Size.y
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6640777089480986107, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_Size.z
-      value: 2
+      value: 1.95
       objectReference: {fileID: 0}
     - target: {fileID: 7025286678397527621, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_LocalScale.x

@@ -29,16 +29,18 @@ public class MovingWallObject : MonoBehaviour
                 _taburetka.UnFreeze();
         }
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.name == "TheTaburetka")
+        if (_taburetka) return;
+
+        if (collision.transform.name != "TheTaburetka") return;
+        _taburetka = collision.gameObject.GetComponent<TaburetkaMovementController>();
+
+        _taburetka.transform.SetParent(transform);
+        if (!stop)
         {
-            _taburetka = collision.gameObject.GetComponent<TaburetkaMovementController>();
-            collision.transform.SetParent(transform);
-            if(stop)
-                _taburetka.UnFreeze();
-            else
-                _taburetka.Freeze();
+            Debug.Log("FreezeFromCollisionEnter");
+            _taburetka.Freeze();
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -46,14 +48,23 @@ public class MovingWallObject : MonoBehaviour
         if (!stop) return; 
         if (collision.transform.IsChildOf(transform))
         {
-            collision.transform.SetParent(null);
-            collision.gameObject.GetComponent<TaburetkaMovementController>().UnFreeze();
+            if (_taburetka)
+            {
+                _taburetka.transform.SetParent(null);
+                Debug.Log("UnFreezeFromCollisionExit");
+                _taburetka.UnFreeze();
+                _taburetka = null;
+            }
         }
     }
     private void MoveToNext()
     {
         currentBeacon += 1;
         if (currentBeacon >= beacons.Length) stop = true;
+        if (_taburetka)
+        {
+            _taburetka.Freeze();
+        }
     }
     public void StartMove()
     {
@@ -63,5 +74,10 @@ public class MovingWallObject : MonoBehaviour
     {
         stop = false;
         currentBeacon = beacon;
+        if (_taburetka)
+        {
+            Debug.Log("FreezeFromStartMoveTo");
+            _taburetka.Freeze();
+        }
     }
 }

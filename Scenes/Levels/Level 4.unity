@@ -2925,6 +2925,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 438689101}
     - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
+      propertyPath: timerBeforeAction
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
       propertyPath: onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -4308,6 +4312,10 @@ PrefabInstance:
       propertyPath: taburetka
       value: 
       objectReference: {fileID: 438689101}
+    - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
+      propertyPath: timerBeforeAction
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 666918102665862373, guid: 803dc57b44e8a5d438036607c21ea255, type: 3}
       propertyPath: onActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
