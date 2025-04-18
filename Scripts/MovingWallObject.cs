@@ -7,6 +7,10 @@ public class MovingWallObject : MonoBehaviour
     [SerializeField] private int startMoveToStartIndex = -1;
     private int currentBeacon;
 
+
+    [SerializeField] private Vector3[] rotationBeacons;
+    [SerializeField] private float rotate_speed;
+    private int currentRotateBeacon;
     private bool stop = true;
 
     private TaburetkaMovementController _taburetka;
@@ -27,15 +31,30 @@ public class MovingWallObject : MonoBehaviour
     private void Update()
     {
         if (stop) return;
-        Vector3 direction = (beacons[currentBeacon] - transform.localPosition).normalized;
-        transform.localPosition += direction * Time.deltaTime * speed;
-        if (Vector3.Distance(transform.localPosition, beacons[currentBeacon]) <= 0.05f)
+        if(transform.localPosition!= beacons[currentBeacon])
         {
-            transform.localPosition= beacons[currentBeacon];
-            stop = true;
-            if(_taburetka)
-                _taburetka.UnFreeze();
+            Vector3 direction = (beacons[currentBeacon] - transform.localPosition).normalized;
+            transform.localPosition += direction * Time.deltaTime * speed;
+            if (Vector3.Distance(transform.localPosition, beacons[currentBeacon]) <= 0.05f)
+            {
+                transform.localPosition = beacons[currentBeacon];
+                stop = true;
+                if (_taburetka)
+                    _taburetka.UnFreeze();
+            }
         }
+        if (transform.rotation != Quaternion.Euler(rotationBeacons[currentRotateBeacon]))
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotationBeacons[currentRotateBeacon]), Time.deltaTime*rotate_speed);
+            if(Quaternion.Angle(transform.rotation, Quaternion.Euler(rotationBeacons[currentRotateBeacon])) < 0.5f)
+            {
+                transform.rotation = Quaternion.Euler(rotationBeacons[currentRotateBeacon]);
+                stop = true;
+                if (_taburetka)
+                    _taburetka.UnFreeze();
+            }
+        }
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -78,14 +97,26 @@ public class MovingWallObject : MonoBehaviour
     {
         stop = false;
     }
-    public void StartMoveTo(int beacon)
+    public void StartRotateTo(int beacon)
     {
         stop = false;
-        currentBeacon = beacon;
+        currentRotateBeacon = beacon;
         if (_taburetka)
         {
-            Debug.Log("FreezeFromStartMoveTo");
             _taburetka.Freeze();
+        }
+    }
+    public void StartMoveTo(int beacon)
+    {
+        currentBeacon = beacon;
+        if (transform.localPosition != beacons[currentBeacon])
+        {
+            stop = false;
+            if (_taburetka)
+            {
+                _taburetka.Freeze();
+                Debug.Log("FREEEZED!");
+            }
         }
     }
 }

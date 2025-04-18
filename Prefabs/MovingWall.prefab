@@ -133,9 +133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beacons:
-  - {x: 5, y: -6.5, z: 8.5}
-  - {x: 5, y: -2.5, z: 8.5}
+  - {x: 1, y: -3, z: 25}
+  - {x: 1, y: 1, z: 25}
   speed: 5
+  startMoveToStartIndex: -1
+  rotationBeacons:
+  - {x: 0, y: 0, z: 0}
+  rotate_speed: 5
 --- !u!65 &6640777089480986107
 BoxCollider:
   m_ObjectHideFlags: 0
