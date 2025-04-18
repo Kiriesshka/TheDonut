@@ -23,7 +23,7 @@ public class GameSettings : MonoBehaviour
         if (isInLevel) return;
         _originalButtonText = buttonText.text;
     }
-    
+
     private void Update()
     {
         if (isInLevel) return;
@@ -66,6 +66,14 @@ public class GameSettings : MonoBehaviour
         buttonText.text = "Ok";
 
         pushAgainWindow.Open();
+    }
+    public void ResetScaleSettings()
+    {
+        _currentUIScaleFactor = 0.5f;
+        canvas.scaleFactor = _currentUIScaleFactor;
+        scaleUISlider.value = _currentUIScaleFactor;
+
+        SaveGameSettings();
     }
     private void SaveGameSettings()
     {

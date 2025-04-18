@@ -4,6 +4,7 @@ public class MovingWallObject : MonoBehaviour
 {
     [SerializeField] private Vector3[] beacons;
     [SerializeField] private float speed;
+    [SerializeField] private int startMoveToStartIndex = -1;
     private int currentBeacon;
 
     private bool stop = true;
@@ -14,6 +15,13 @@ public class MovingWallObject : MonoBehaviour
         for(int i = 0; i < beacons.Length-1; i++)
         {
             Debug.DrawLine(beacons[i], beacons[i + 1], Color.red);
+        }
+    }
+    private void Start()
+    {
+        if(startMoveToStartIndex != -1)
+        {
+            StartMoveTo(startMoveToStartIndex);
         }
     }
     private void Update()
