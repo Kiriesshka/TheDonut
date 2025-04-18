@@ -19,11 +19,11 @@ public class MovingWallObject : MonoBehaviour
     private void Update()
     {
         if (stop) return;
-        Vector3 direction = (beacons[currentBeacon] - transform.position).normalized;
-        transform.position += direction * Time.deltaTime * speed;
-        if (Vector3.Distance(transform.position, beacons[currentBeacon]) <= 0.05f)
+        Vector3 direction = (beacons[currentBeacon] - transform.localPosition).normalized;
+        transform.localPosition += direction * Time.deltaTime * speed;
+        if (Vector3.Distance(transform.localPosition, beacons[currentBeacon]) <= 0.05f)
         {
-            transform.position = beacons[currentBeacon];
+            transform.localPosition= beacons[currentBeacon];
             stop = true;
             if(_taburetka)
                 _taburetka.UnFreeze();

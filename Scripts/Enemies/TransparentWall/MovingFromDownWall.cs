@@ -28,7 +28,6 @@ public class MovingFromDownWall : MonoBehaviour, TaburetkaMovedHandler
         {
             controlled.transform.position = Vector3.Lerp(controlled.transform.position, transform.position+offset, Time.deltaTime * speed);
             controlled.transform.rotation = Quaternion.Lerp(controlled.transform.rotation, Quaternion.Euler(offRotation), Time.deltaTime * speed);
-
         }
     }
     public void ReCalculate()

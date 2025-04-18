@@ -23,6 +23,8 @@ public class MicrobroMovementController : MovementController
     private bool _isRolling;
 
     private Vector3 _startPosition;
+
+   
     private void Start()
     {
         _startPosition = transform.position;
@@ -41,6 +43,7 @@ public class MicrobroMovementController : MovementController
                 _time = timeSpaceBetweenTurns;
                 if (CanRollInDirection(turns[_currentTurn]))
                 {
+                    _time *= 1+turns[_currentTurn].y;
                     StartCoroutine(Roll(turns[_currentTurn]));
                     NextTurn();
                 }
@@ -71,19 +74,20 @@ public class MicrobroMovementController : MovementController
     }
     private bool CanRollInDirection(Vector3 direction)
     {
-        return !(Physics.Raycast(transform.position-new Vector3(0,0.21f), direction, 0.45f, wall)) && IsGrounded();
+        return !(Physics.Raycast(transform.position-new Vector3(0,transform.localScale.x*0.42f), direction, transform.localScale.x*0.9f, wall)) && IsGrounded();
     }
     private bool IsGrounded()
     {
-        bool isGr = Physics.Raycast(transform.position, Vector3.down, 0.28f, wall);
+        bool isGr = Physics.Raycast(transform.position, Vector3.down, transform.localScale.x*0.56f, wall);
         return isGr;
     }
     IEnumerator Roll(Vector3 direction)
     {
+        direction.y = 0;
         _isRolling = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
         float remainingAngle = 90;
-        Vector3 rotationCenter = (transform.position + direction / 4 + Vector3.down / 4);
+        Vector3 rotationCenter = (transform.position + direction / 2*transform.localScale.x + Vector3.down / 2 * transform.localScale.x);
         Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction);
 
         while (remainingAngle > 0)

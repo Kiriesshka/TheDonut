@@ -91,7 +91,6 @@ public class TaburetkaMovementController : MovementController
     public void Freeze()
     {
         if (_isFreezed) return;
-        Debug.Log("Freeze!");
         _isFreezed = true;
         isRolling = false;
         transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
@@ -101,7 +100,6 @@ public class TaburetkaMovementController : MovementController
     public void UnFreeze()
     {
         if (!_isFreezed) return;
-        Debug.Log("UnFreeze!");
         _isFreezed = false;
         transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
         transform.eulerAngles = new Vector3(Mathf.RoundToInt(transform.eulerAngles.x), Mathf.RoundToInt(transform.eulerAngles.y), Mathf.RoundToInt(transform.eulerAngles.z));
