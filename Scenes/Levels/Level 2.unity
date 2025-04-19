@@ -1869,7 +1869,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0430\u043A \u0434\u0435\u0440\u0436\u0430\u0442\u044C"
+  m_text: '...
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5097,6 +5099,30 @@ PrefabInstance:
     - target: {fileID: 1967853898944632073, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: m_Name
       value: MovingWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[0].x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[0].y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[0].z
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[1].x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[1].y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631444330606336878, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
+      propertyPath: beacons.Array.data[1].z
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3920641389486406420, guid: 28634c1a0da0e1a4e8d2d8ab97667a29, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
