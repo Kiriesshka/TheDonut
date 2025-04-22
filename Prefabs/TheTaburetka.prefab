@@ -382,11 +382,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   rb: {fileID: 0}
+  sounds:
+  - Wood0
   w: {fileID: 0}
   a: {fileID: 0}
   s: {fileID: 0}
   d: {fileID: 0}
-  unableToGo: 0
 --- !u!114 &4447565861454293438
 MonoBehaviour:
   m_ObjectHideFlags: 0

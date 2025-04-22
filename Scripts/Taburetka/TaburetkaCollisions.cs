@@ -79,6 +79,7 @@ public class TaburetkaCollisions : MonoBehaviour
         _resistanceLeft = timerResistance;
 
         hp -= Mathf.Min(hp, enemyData.damage);
+        enemyData.MakeHitTaburetkaSound();
         hpChanged.Invoke();
         if (hp <= 0)
         {

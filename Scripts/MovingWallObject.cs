@@ -14,6 +14,11 @@ public class MovingWallObject : MonoBehaviour
     private bool stop = true;
 
     private TaburetkaMovementController _taburetka;
+
+    [SerializeField] private string soundOnMove;
+    private AudioSource sourceWithSoundOnMove;
+
+    private KT_GameSound gameSound;
     private void OnValidate()
     {
         for(int i = 0; i < beacons.Length-1; i++)
@@ -27,6 +32,7 @@ public class MovingWallObject : MonoBehaviour
         {
             StartMoveTo(startMoveToStartIndex);
         }
+        gameSound = GameObject.Find("KT_GlobalSettings").GetComponent<KT_GameSound>();
     }
     private void Update()
     {
@@ -39,6 +45,10 @@ public class MovingWallObject : MonoBehaviour
             {
                 transform.localPosition = beacons[currentBeacon];
                 stop = true;
+                if (sourceWithSoundOnMove)
+                {
+                    Destroy(sourceWithSoundOnMove.gameObject);
+                }
                 if (_taburetka)
                     _taburetka.UnFreeze();
             }
@@ -50,6 +60,10 @@ public class MovingWallObject : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(rotationBeacons[currentRotateBeacon]);
                 stop = true;
+                if (sourceWithSoundOnMove)
+                {
+                    Destroy(sourceWithSoundOnMove.gameObject);
+                }
                 if (_taburetka)
                     _taburetka.UnFreeze();
             }
@@ -116,6 +130,11 @@ public class MovingWallObject : MonoBehaviour
             {
                 _taburetka.Freeze();
                 Debug.Log("FREEEZED!");
+            }
+            if(soundOnMove != "" && sourceWithSoundOnMove == null)
+            {
+                sourceWithSoundOnMove = gameSound.MakeSoundAndReturnAudioSource(soundOnMove, "World");
+                sourceWithSoundOnMove.loop = true;
             }
         }
     }

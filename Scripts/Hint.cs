@@ -7,10 +7,17 @@ public class Hint : MonoBehaviour, TaburetkaMovedHandler
     [SerializeField] private Transform player;
     [SerializeField] private Image tintImage;
     [SerializeField] private TMP_Text text;
+    [SerializeField] private bool enableOnStart;
 
-    public bool _disabled;
+    private bool _disabled = true;
     private void Start()
     {
+        if (enableOnStart)
+        {
+            _disabled = false;
+            return;
+        }
+        _disabled = true;
         tintImage.color = new Color(tintImage.color.r, tintImage.color.g, tintImage.color.b, 0);
         text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
     }

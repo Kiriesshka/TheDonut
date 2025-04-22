@@ -15,6 +15,17 @@ public class GameSettings : MonoBehaviour
     private string _originalButtonText;
 
     [SerializeField] private bool isInLevel;
+
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider soundGlobalVolumeSlider;
+    [SerializeField] private Slider worldEffectsSlider;
+    [SerializeField] private Slider uiEffectsSlider;
+
+    private float _musicVolume = 0.5f;
+    private float _soundGlobalVolume = 1f;
+    private float _worldEffectsVolume = 1f;
+    private float _uiEffectsVolume = 1f;
+
     private void Start()
     {
         LoadSettings();
@@ -40,6 +51,43 @@ public class GameSettings : MonoBehaviour
             }
         }
     }
+    private void ApplySoundSettings()
+    {
+        KT_GameSound k = GetComponent<KT_GameSound>();
+        k.channelsVolumeSettings[2] = _musicVolume * _soundGlobalVolume;
+        k.channelsVolumeSettings[1] = _worldEffectsVolume * _soundGlobalVolume;
+        k.channelsVolumeSettings[0] = _uiEffectsVolume * _soundGlobalVolume;
+
+        k.ApplySoundSettingsForMusic();
+
+        SaveGameSettings();
+    }
+
+    public void SetMusicVolume()
+    {
+        _musicVolume = musicVolumeSlider.value;
+        PlayerPrefs.SetFloat("_musicVolume", _musicVolume);
+        ApplySoundSettings();
+    }
+    public void SetSoundGlobalVolume()
+    {
+        _soundGlobalVolume = soundGlobalVolumeSlider.value;
+        PlayerPrefs.SetFloat("_soundGlobalVolume", _soundGlobalVolume);
+        ApplySoundSettings();
+    }
+    public void SetWorldEffectsVolume()
+    {
+        _worldEffectsVolume = worldEffectsSlider.value;
+        PlayerPrefs.SetFloat("_worldEffectsVolume", _worldEffectsVolume);
+        ApplySoundSettings();
+    }
+    public void SetUiEffetcsVolume()
+    {
+        _uiEffectsVolume = uiEffectsSlider.value;
+        PlayerPrefs.SetFloat("_uiEffectsVolume", _uiEffectsVolume);
+        ApplySoundSettings();
+    }
+
     private void UpdateUIScale()
     {
         canvas.scaleFactor = scaleUISlider.value;
@@ -83,8 +131,21 @@ public class GameSettings : MonoBehaviour
     private void LoadSettings()
     {
         _currentUIScaleFactor = PlayerPrefs.HasKey("_currentUIScaleFactor") ? PlayerPrefs.GetFloat("_currentUIScaleFactor") : _currentUIScaleFactor;
+        _soundGlobalVolume = PlayerPrefs.HasKey("_soundGlobalVolume") ? PlayerPrefs.GetFloat("_soundGlobalVolume") : _soundGlobalVolume;
+        _musicVolume = PlayerPrefs.HasKey("_musicVolume") ? PlayerPrefs.GetFloat("_musicVolume") : _musicVolume;
+        _uiEffectsVolume = PlayerPrefs.HasKey("_uiEffectsVolume") ? PlayerPrefs.GetFloat("_uiEffectsVolume") : _uiEffectsVolume;
+        _worldEffectsVolume = PlayerPrefs.HasKey("_worldEffectsVolume") ? PlayerPrefs.GetFloat("_worldEffectsVolume") : _worldEffectsVolume;
+
+        ApplySoundSettings();
+
+
         if (isInLevel) return;
         scaleUISlider.value = _currentUIScaleFactor;
+        musicVolumeSlider.value = _musicVolume;
+        soundGlobalVolumeSlider.value = _soundGlobalVolume;
+        uiEffectsSlider.value = _uiEffectsVolume;
+        worldEffectsSlider.value = _worldEffectsVolume;
+
     }
 
 }
